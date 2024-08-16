@@ -1,0 +1,41 @@
+  // indexes are on the fields that could be usefull to filter later one, I believe on a movie app that the reads and filters will be more important than the writes
+
+  generator client {
+    provider = "prisma-client-js"
+  }
+
+  datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+  }
+
+  model Movie {
+    id          Int       @id @default(autoincrement())
+    title       String
+    description String
+    releaseDate DateTime
+    genres      MovieGenre[]
+
+    @@unique([title, releaseDate]) // Prolly names can be dupes but same movie same date is not possible (hopefully :D)
+    @@index([title])
+    @@index([releaseDate])
+  }
+
+  model Genre {
+    id    Int      @id @default(autoincrement())
+    name  String   @unique
+    
+    @@index([name])
+    movies MovieGenre[]
+  }
+
+  model MovieGenre {
+    id      Int    @id @default(autoincrement())
+    movie   Movie  @relation(fields: [movieId], references: [id])
+    movieId Int
+    genre   Genre  @relation(fields: [genreId], references: [id])
+    genreId Int
+
+    @@unique([movieId, genreId])
+    @@index([movieId, genreId])
+  }
