@@ -1,73 +1,72 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+This project is a Movies API built with NestJS. It includes endpoints for managing movies and genres. The application is fully containerized using Docker, so you don't need to install any dependencies locally.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Prerequisites
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Description
+## Getting Started
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+### 1. Clone the Repository
 
 ```bash
-$ npm install
+git clone https://github.com/rodas96/movies_api_nestjs.git
+cd movies_api_nestjs
+docker-compose up --build
+
+Open your browser and navigate to http://localhost:3000
+
+Available API Endpoints
+
+MoviesController Paths:
+
+	1.	GET /movies
+	•	Description: Retrieves a list of all movies.
+	•	Method: findAll
+	2.	GET /movies/search
+	•	Description: Searches for movies based on optional title and/or genre query parameters.
+	•	Method: search
+	•	Query Parameters:
+	•	title (optional)
+	•	genre (optional)
+	3.	GET /movies/:id
+	•	Description: Retrieves a single movie by its ID.
+	•	Method: findOne
+	•	Path Parameter:
+	•	id (number)
+	4.	POST /movies
+	•	Description: Creates a new movie.
+	•	Method: create
+	•	Body: CreateMovieDto
+	5.	PATCH /movies/:id
+	•	Description: Updates an existing movie by its ID.
+	•	Method: update
+	•	Path Parameter:
+	•	id (number)
+	•	Body: UpdateMovieDto
+	6.	DELETE /movies/:id
+	•	Description: Deletes a movie by its ID.
+	•	Method: remove
+	•	Path Parameter:
+	•	id (number)
+
+GenresController Paths:
+
+	1.	GET /genres
+	•	Description: Retrieves a list of all genres.
+	•	Method: findAll
+	2.	POST /genres
+	•	Description: Creates a new genre.
+	•	Method: create
+	•	Body: CreateGenreDto
+	3.	DELETE /genres/:name
+	•	Description: Deletes a genre by its name.
+	•	Method: remove
+	•	Path Parameter:
+	•	name (string)
+
+To run the unit tests and integration tests:
+  - docker-compose exec app npm run test
+
+If you are on windows or not on M macbooks might have compability issues let me know and I will fix them.
 ```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
