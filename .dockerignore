@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+Dockerfile
+docker-compose.yml
+.env
+.env.test
+.env.production
+dist
+
+# Ignore local SQLite databases
+*.db
+*.sqlite
+
+.vscode

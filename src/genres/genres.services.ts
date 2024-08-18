@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { GenreRepository } from './generes.repository';
 import { CreateGenreDto } from './create-genre.dto';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class GenresService {
@@ -15,7 +14,6 @@ export class GenresService {
     console.log('here');
     return this.genreRepository.create(createGenreDto);
   }
-  // I though it was easier to try to insert a genre and deal with P2002 "Unique constraint failed on the {constraint} than to check if a genre exists before creating it. https://www.prisma.io/docs/orm/reference/error-reference"
   async upsert(name: string) {
     return this.genreRepository.upsertGenre(name);
   }

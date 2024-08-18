@@ -45,5 +45,4 @@ export class MoviesController {
   remove(@Param('id') id: number) {
     return this.moviesService.remove(id);
   }
-  
 }
